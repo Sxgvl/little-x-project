@@ -6,8 +6,23 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		F10736132D3D8EF800740871 /* Like+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = F107360E2D3D8EF800740871 /* Like+CoreDataProperties.swift */; };
+		F10736142D3D8EF800740871 /* Post+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = F107360F2D3D8EF800740871 /* Post+CoreDataClass.swift */; };
+		F10736152D3D8EF800740871 /* User+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = F10736122D3D8EF800740871 /* User+CoreDataProperties.swift */; };
+		F10736162D3D8EF800740871 /* Post+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = F10736102D3D8EF800740871 /* Post+CoreDataProperties.swift */; };
+		F10736172D3D8EF800740871 /* User+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = F10736112D3D8EF800740871 /* User+CoreDataClass.swift */; };
+		F10736182D3D8EF800740871 /* Like+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = F107360D2D3D8EF800740871 /* Like+CoreDataClass.swift */; };
+/* End PBXBuildFile section */
+
 /* Begin PBXFileReference section */
 		F10735E72D3D8CF000740871 /* little-x-project.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "little-x-project.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		F107360D2D3D8EF800740871 /* Like+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "Like+CoreDataClass.swift"; path = "little-x-project/Core Data/Like+CoreDataClass.swift"; sourceTree = "<group>"; };
+		F107360E2D3D8EF800740871 /* Like+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "Like+CoreDataProperties.swift"; path = "little-x-project/Core Data/Like+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		F107360F2D3D8EF800740871 /* Post+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "Post+CoreDataClass.swift"; path = "little-x-project/Core Data/Post+CoreDataClass.swift"; sourceTree = "<group>"; };
+		F10736102D3D8EF800740871 /* Post+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "Post+CoreDataProperties.swift"; path = "little-x-project/Core Data/Post+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		F10736112D3D8EF800740871 /* User+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "User+CoreDataClass.swift"; path = "little-x-project/Core Data/User+CoreDataClass.swift"; sourceTree = "<group>"; };
+		F10736122D3D8EF800740871 /* User+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "User+CoreDataProperties.swift"; path = "little-x-project/Core Data/User+CoreDataProperties.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
@@ -32,6 +47,12 @@
 		F10735DE2D3D8CF000740871 = {
 			isa = PBXGroup;
 			children = (
+				F107360D2D3D8EF800740871 /* Like+CoreDataClass.swift */,
+				F107360E2D3D8EF800740871 /* Like+CoreDataProperties.swift */,
+				F107360F2D3D8EF800740871 /* Post+CoreDataClass.swift */,
+				F10736102D3D8EF800740871 /* Post+CoreDataProperties.swift */,
+				F10736112D3D8EF800740871 /* User+CoreDataClass.swift */,
+				F10736122D3D8EF800740871 /* User+CoreDataProperties.swift */,
 				F10735E92D3D8CF000740871 /* little-x-project */,
 				F10735E82D3D8CF000740871 /* Products */,
 			);
@@ -119,6 +140,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F10736132D3D8EF800740871 /* Like+CoreDataProperties.swift in Sources */,
+				F10736142D3D8EF800740871 /* Post+CoreDataClass.swift in Sources */,
+				F10736152D3D8EF800740871 /* User+CoreDataProperties.swift in Sources */,
+				F10736162D3D8EF800740871 /* Post+CoreDataProperties.swift in Sources */,
+				F10736172D3D8EF800740871 /* User+CoreDataClass.swift in Sources */,
+				F10736182D3D8EF800740871 /* Like+CoreDataClass.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
