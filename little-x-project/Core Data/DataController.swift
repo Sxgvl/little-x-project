@@ -8,7 +8,7 @@
 import Foundation
 import CoreData
 
-// permet d'interagir avec la bd
+// permet de controler/interagir avec la bd
 // un controller = un contexte
 class DataController: ObservableObject {
     // représentation de la bd qu'on va modifier

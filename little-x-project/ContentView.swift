@@ -8,6 +8,9 @@
 import SwiftUI
 
 struct ContentView: View {
+    // voir le contexte comme une copie conforme de la base de données
+    @Environment(\.managedObjectContext) var context
+    
     var body: some View {
         VStack {
             Image(systemName: "globe")

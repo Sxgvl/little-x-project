@@ -17,7 +17,7 @@ extension User {
     }
 
     @NSManaged public var userName: String?
-    @NSManaged public var profileImageURL: String?
+    @NSManaged public var profileImageURL: URL?
     @NSManaged public var follows: NSSet?
 
 }

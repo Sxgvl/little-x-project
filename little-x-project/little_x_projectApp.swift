@@ -9,9 +9,16 @@ import SwiftUI
 
 @main
 struct little_x_projectApp: App {
+    // transmettre en tant que variable d'environnement
+    @StateObject private var dataController = DataController.shared
+    
     var body: some Scene {
         WindowGroup {
             ContentView()
+                .environment(
+                \.managedObjectContext,
+                 dataController.container.viewContext
+            )
         }
     }
 }
