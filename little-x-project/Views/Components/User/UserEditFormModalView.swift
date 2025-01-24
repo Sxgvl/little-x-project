@@ -62,6 +62,7 @@ struct UserEditFormModalView: View {
         }
     }
     
+    //
     private func saveChanges() {
         user.userName = username
         user.profileImageURL = profileImageURL

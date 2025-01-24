@@ -61,18 +61,42 @@ struct UserProfileCellView: View {
             // Menu des actions si l'utilisateur est sélectionné
             if isSelected {
                 Menu {
-                    Button("Voir les posts") {
-                        isShowingContentView = true
-                        onSelect()
-                    }
-                    Button("Modifier") {
-                        showingEditModal = true
-                    }
+                    //
+                    Button(
+                        action: {
+                            isShowingContentView = true
+                            onSelect()
+                        },
+                        label : {
+                            HStack{
+                                Image(systemName: "list.dash")
+                                    .foregroundColor(.blue)
+                                Text("Voir les posts")
+                            }
+                        }
+                    )
+                    
+                    //
+                    Button(
+                        action: {
+                            showingEditModal = true
+                        },
+                        label : {
+                            HStack{
+                                Image(systemName: "square.and.pencil")
+                                    .foregroundColor(.orange)
+                                Text("Modifier")
+                            }
+                        }
+                    )
+                    //
                     Button(role: .destructive) {
                         deleteUser()
                     } label: {
                         Label("Supprimer", systemImage: "trash")
                     }
+                    
+                    //
                     Button("Annuler", role: .cancel) {}
                 } label: {
                     Image(systemName: "ellipsis")
@@ -84,7 +108,7 @@ struct UserProfileCellView: View {
         .padding()
     }
     
-    
+    //
     private func deleteUser() {
         context.delete(user)
         do {
@@ -106,11 +130,3 @@ struct UserProfileCellView: View {
         onSelect: {}
     )
 }
-
-//#Preview {
-//    UserProfileCellView(
-//        user: User(), // Remplace par un objet Core Data User valide pour la prévisualisation
-//        isSelected: true,
-//        onSelect: {}
-//    )
-//}
