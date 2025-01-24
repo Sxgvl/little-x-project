@@ -15,7 +15,7 @@ struct ContentView: View {
     
     var body: some View {
         NavigationView {
-            VStack(alignment: .leading) {
+            VStack {
                 if let user = selectedUser, let posts = user.posts?.allObjects as? [Post], !posts.isEmpty {
                     List(posts, id: \.self) { post in
                         VStack(alignment: .leading) {
@@ -32,19 +32,26 @@ struct ContentView: View {
                          : "No posts available for this user.")
                     .font(.callout)
                     .foregroundColor(.gray)
+                    .offset(x: -45, y: -300)
                 }
             }
             .navigationBarTitle("Posts Thread")
-            .navigationBarItems(trailing: Button(action: {
-                isShowingUserList = true
-            }) {
-                Image(systemName: "person.crop.circle.badge.plus")
-                    .font(.title2)
-            })
+            .navigationBarItems(trailing:
+                                    Button(
+                                        action: {
+                                            isShowingUserList = true
+                                        },
+                                        label: {
+                                            Image(systemName: "person.crop.circle.badge.plus")
+                                                .font(.title2)
+                                        }
+                                    )
+            )
             .sheet(isPresented: $isShowingUserList) {
                 UserListView(selectedUser: $selectedUser)
                     .environment(\.managedObjectContext, context)
             }
+            //
             .overlay(alignment: .bottomTrailing) {
                 Button (
                     action: {
@@ -63,13 +70,13 @@ struct ContentView: View {
                 .padding()
                 .disabled(selectedUser == nil)
                 .sheet(isPresented: $isShowingAddPost) {
-                    if let user = selectedUser {
+                    if selectedUser != nil {
                         UserPostFormModalView()
                             .environment(\.managedObjectContext, context)
                     }
                 }
+                .offset(x: 50, y: 330)
             }
-            
         }
     }
 }

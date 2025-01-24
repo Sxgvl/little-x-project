@@ -9,9 +9,12 @@ import SwiftUI
 
 struct UserListView: View {
     @Environment(\.managedObjectContext) var context
-    @FetchRequest(sortDescriptors: []) private var users: FetchedResults<User>
+    @FetchRequest(
+        sortDescriptors: [NSSortDescriptor(keyPath: \User.userName, ascending: true)]
+    ) private var users: FetchedResults<User>
     
     @State private var isShowingCreateUserModal = false
+    @State private var isShowingContentView = false
     @Binding var selectedUser: User?
     
     var body: some View {
@@ -27,13 +30,14 @@ struct UserListView: View {
                             ),
                             isSelected: user == selectedUser
                         ).onTapGesture {
+                            isShowingContentView = true
                             selectedUser = user
                         }
                     } else {
                         Text("Invalid User")
                     }
                 }
-            }
+            }.listStyle(.plain)
             .navigationBarTitle("Users")
             .navigationBarItems(trailing: Button("Add") {
                 isShowingCreateUserModal.toggle()

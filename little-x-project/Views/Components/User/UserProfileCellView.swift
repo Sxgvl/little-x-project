@@ -19,8 +19,8 @@ struct UserProfileCellView: View {
     }
     
     @Environment(\.managedObjectContext) var context
-    @State private var showingEditAlert = false
-    @State private var showingDeleteAlert = false
+    @State private var showingEditModal = false
+    @State private var isShowingContentView = false
     
     var body: some View {
         HStack {
@@ -51,19 +51,16 @@ struct UserProfileCellView: View {
             if isSelected {
                 Menu {
                     //
-                    Button("Annuler", role: .cancel) {}
-                    
-                    //
                     Button(
                         action: {
-                            showingDeleteAlert = true
-                            print("Supprimer")
+                            isShowingContentView = true
+                            print("Voir les posts")
                         },
                         label : {
                             HStack{
-                                Image(systemName: "trash")
-                                    .foregroundColor(.red)
-                                Text("Supprimer")
+                                Image(systemName: "list.dash")
+                                    .foregroundColor(.blue)
+                                Text("Voir les posts")
                             }
                         }
                     )
@@ -71,7 +68,7 @@ struct UserProfileCellView: View {
                     //
                     Button(
                         action: {
-                            showingEditAlert = true
+                            showingEditModal = true
                             print("Modifier")
                         },
                         label : {
@@ -86,16 +83,20 @@ struct UserProfileCellView: View {
                     //
                     Button(
                         action: {
-                            print("Voir les posts")
+                            //                            showingDeleteAlert = true
+                            print("Supprimer")
                         },
                         label : {
                             HStack{
-                                Image(systemName: "list.dash")
-                                    .foregroundColor(.blue)
-                                Text("Voir les posts")
+                                Image(systemName: "trash")
+                                    .foregroundColor(.red)
+                                Text("Supprimer")
                             }
                         }
                     )
+                    
+                    //
+                    Button("Annuler", role: .cancel) {}
                 } label: {
                     Label {
                         Text("")
@@ -110,16 +111,16 @@ struct UserProfileCellView: View {
         .padding()
     }
     
-//    private func deleteUser() {
-//        // Suppression de l'utilisateur dans CoreData
-//        context.delete(user)
-//        
-//        do {
-//            try context.save()
-//        } catch {
-//            print("Failed to delete user: \(error.localizedDescription)")
-//        }
-//    }
+    //    private func deleteUser() {
+    //        // Suppression de l'utilisateur dans CoreData
+    //        context.delete(user)
+    //
+    //        do {
+    //            try context.save()
+    //        } catch {
+    //            print("Failed to delete user: \(error.localizedDescription)")
+    //        }
+    //    }
 }
 
 #Preview {
