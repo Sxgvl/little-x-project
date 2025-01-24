@@ -7,19 +7,22 @@
 
 import SwiftUI
 
-struct UserPostFormModalView: View {
+struct PostFormModalView: View {
     @Environment(\.dismiss) var dismiss
     @Environment(\.managedObjectContext) var context
     @State private var title: String = ""
     @State private var content: String = ""
-    @State private var selectedUser: User?
-    @FetchRequest(sortDescriptors: []) private var users: FetchedResults<User>
+    let selectedUser: User
     
     var body: some View {
-        NavigationView {
+        NavigationStack {
+            //
             Form {
+                //
                 Section(header: Text("Post Details")) {
+                    //
                     TextField("Title", text: $title)
+                    //
                     TextEditor(text: $content)
                         .font(.system(size: 14))
                         .padding(12)
@@ -30,11 +33,11 @@ struct UserPostFormModalView: View {
                         )
                         .frame(height: 120)
                     
-                    Picker("Select User", selection: $selectedUser) {
-                        ForEach(users, id: \.self) { user in
-                            Text(user.userName ?? "Unknown").tag(user as User?)
-                        }
-                    }
+//                    Picker("Select User", selection: $selectedUser) {
+//                        ForEach(users, id: \.self) { user in
+//                            Text(user.userName ?? "Unknown").tag(user as User?)
+//                        }
+//                    }
                 }
             }
             .navigationBarTitle("Create Post", displayMode: .inline)
@@ -50,20 +53,16 @@ struct UserPostFormModalView: View {
         }
     }
     
+    // 
     private func createPost() {
-        guard let selectedUser = selectedUser else {
-            print("No user selected")
-            return
-        }
-        
         let post = Post(context: context)
         post.title = title
         post.content = content
         post.author = selectedUser
-        
-        // L'ajout des likes pourrait se faire plus tard
-        post.likes = []
-        
+
+        // TODO : L'ajout des likes pourrait se faire plus tard
+//        post.likes = []
+
         do {
             try context.save()
         } catch {
@@ -73,5 +72,8 @@ struct UserPostFormModalView: View {
 }
 
 #Preview {
-    UserPostFormModalView()
+    let context = DataController.preview.container.viewContext
+    
+    return PostFormModalView(selectedUser: User(context: context))
+        .environment(\.managedObjectContext, context)
 }

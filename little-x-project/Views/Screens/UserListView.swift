@@ -15,10 +15,12 @@ struct UserListView: View {
     
     @State private var isShowingCreateUserModal = false
     @State private var isShowingContentView = false
+    
+    @Environment(\.dismiss) var dismiss
     @Binding var selectedUser: User?
     
     var body: some View {
-        NavigationView {
+        NavigationStack {
             List {
                 ForEach(users, id: \.self) { user in
                     if let username = user.userName {
@@ -28,34 +30,60 @@ struct UserListView: View {
                                 follows: [],
                                 profileImageURL: URL(string: user.profileImageURL ?? "")
                             ),
-                            isSelected: user == selectedUser
-                        ).onTapGesture {
-                            isShowingContentView = true
+                            isSelected: user == selectedUser,
+                            onSelect: {
+                                selectedUser = user
+                                isShowingCreateUserModal = false // Ferme la modale
+                                dismiss()
+                            }
+                        )
+                        //
+                        .onTapGesture {
                             selectedUser = user
+                        }
+                        //
+                        .contextMenu {
+                            Button("Voir les posts") {
+                                selectedUser = user
+                                isShowingContentView = true
+                            }
                         }
                     } else {
                         Text("Invalid User")
                     }
                 }
             }.listStyle(.plain)
-            .navigationBarTitle("Users")
-            .navigationBarItems(trailing: Button("Add") {
-                isShowingCreateUserModal.toggle()
-            })
-            .sheet(isPresented: $isShowingCreateUserModal) {
-                UserFormModalView()
-                    .environment(\.managedObjectContext, context)
-            }
+                .navigationBarTitle("Users")
+                .navigationBarItems(trailing: Button("Add") {
+                    isShowingCreateUserModal.toggle()
+                })
+                .sheet(isPresented: $isShowingCreateUserModal) {
+                    UserFormModalView()
+                        .environment(\.managedObjectContext, context)
+                }
+            // naviguer vers la ContentView
+                .navigationDestination(isPresented: $isShowingContentView) {
+                    if let user = selectedUser {
+                        ContentView()
+                            .environment(\.managedObjectContext, context)
+                            .onAppear {
+                                print("Navigating to ContentView for user: \(user.userName ?? "Unknown")")
+                            }
+                    } else {
+                        Text("No user selected")
+                            .foregroundColor(.gray)
+                    }
+                }
         }
     }
 }
 
 #Preview {
     let context = DataController.preview.container.viewContext
-        let user = User(context: context)
-        user.userName = "John Doe"
-        user.profileImageURL = ""
-
-        return UserListView(selectedUser: .constant(user))
-            .environment(\.managedObjectContext, context)
+    let user = User(context: context)
+    user.userName = "John Doe"
+    user.profileImageURL = ""
+    
+    return UserListView(selectedUser: .constant(user))
+        .environment(\.managedObjectContext, context)
 }

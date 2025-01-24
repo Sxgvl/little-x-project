@@ -22,6 +22,8 @@ struct UserProfileCellView: View {
     @State private var showingEditModal = false
     @State private var isShowingContentView = false
     
+    let onSelect: () -> Void
+    
     var body: some View {
         HStack {
             AsyncImage(url: user.profileImageURL) { image in
@@ -54,7 +56,8 @@ struct UserProfileCellView: View {
                     Button(
                         action: {
                             isShowingContentView = true
-                            print("Voir les posts")
+//                            print("Voir les posts")
+                            onSelect()
                         },
                         label : {
                             HStack{
@@ -130,6 +133,7 @@ struct UserProfileCellView: View {
             follows: [],
             profileImageURL: URL(string: "https://unsplash.com/fr/photos/femme-souriant-portant-une-couronne-de-fleurs-vTL_qy03D1I?utm_content=creditShareLink&utm_medium=referral&utm_source=unsplash")
         ),
-        isSelected: true
+        isSelected: true,
+        onSelect: {}
     )
 }
