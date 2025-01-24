@@ -7,22 +7,22 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		F11AA7E52D42F10F00359C90 /* Like+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = F11AA7DF2D42F10F00359C90 /* Like+CoreDataClass.swift */; };
-		F11AA7E62D42F10F00359C90 /* User+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = F11AA7E42D42F10F00359C90 /* User+CoreDataProperties.swift */; };
-		F11AA7E72D42F10F00359C90 /* User+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = F11AA7E32D42F10F00359C90 /* User+CoreDataClass.swift */; };
-		F11AA7E82D42F10F00359C90 /* Like+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = F11AA7E02D42F10F00359C90 /* Like+CoreDataProperties.swift */; };
-		F11AA7E92D42F10F00359C90 /* Post+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = F11AA7E12D42F10F00359C90 /* Post+CoreDataClass.swift */; };
-		F11AA7EA2D42F10F00359C90 /* Post+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = F11AA7E22D42F10F00359C90 /* Post+CoreDataProperties.swift */; };
+		F11AA8A32D43BE5B00359C90 /* Post+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = F11AA8A02D43BE5B00359C90 /* Post+CoreDataProperties.swift */; };
+		F11AA8A42D43BE5B00359C90 /* Like+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = F11AA89D2D43BE5B00359C90 /* Like+CoreDataClass.swift */; };
+		F11AA8A52D43BE5B00359C90 /* Like+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = F11AA89E2D43BE5B00359C90 /* Like+CoreDataProperties.swift */; };
+		F11AA8A62D43BE5B00359C90 /* Post+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = F11AA89F2D43BE5B00359C90 /* Post+CoreDataClass.swift */; };
+		F11AA8A72D43BE5B00359C90 /* User+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = F11AA8A12D43BE5B00359C90 /* User+CoreDataClass.swift */; };
+		F11AA8A82D43BE5B00359C90 /* User+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = F11AA8A22D43BE5B00359C90 /* User+CoreDataProperties.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		F10735E72D3D8CF000740871 /* little-x-project.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "little-x-project.app"; sourceTree = BUILT_PRODUCTS_DIR; };
-		F11AA7DF2D42F10F00359C90 /* Like+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "Like+CoreDataClass.swift"; path = "little-x-project/Core Data/Like+CoreDataClass.swift"; sourceTree = "<group>"; };
-		F11AA7E02D42F10F00359C90 /* Like+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "Like+CoreDataProperties.swift"; path = "little-x-project/Core Data/Like+CoreDataProperties.swift"; sourceTree = "<group>"; };
-		F11AA7E12D42F10F00359C90 /* Post+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "Post+CoreDataClass.swift"; path = "little-x-project/Core Data/Post+CoreDataClass.swift"; sourceTree = "<group>"; };
-		F11AA7E22D42F10F00359C90 /* Post+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "Post+CoreDataProperties.swift"; path = "little-x-project/Core Data/Post+CoreDataProperties.swift"; sourceTree = "<group>"; };
-		F11AA7E32D42F10F00359C90 /* User+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "User+CoreDataClass.swift"; path = "little-x-project/Core Data/User+CoreDataClass.swift"; sourceTree = "<group>"; };
-		F11AA7E42D42F10F00359C90 /* User+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "User+CoreDataProperties.swift"; path = "little-x-project/Core Data/User+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		F11AA89D2D43BE5B00359C90 /* Like+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "Like+CoreDataClass.swift"; path = "little-x-project/Core Data/Like+CoreDataClass.swift"; sourceTree = "<group>"; };
+		F11AA89E2D43BE5B00359C90 /* Like+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "Like+CoreDataProperties.swift"; path = "little-x-project/Core Data/Like+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		F11AA89F2D43BE5B00359C90 /* Post+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "Post+CoreDataClass.swift"; path = "little-x-project/Core Data/Post+CoreDataClass.swift"; sourceTree = "<group>"; };
+		F11AA8A02D43BE5B00359C90 /* Post+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "Post+CoreDataProperties.swift"; path = "little-x-project/Core Data/Post+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		F11AA8A12D43BE5B00359C90 /* User+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "User+CoreDataClass.swift"; path = "little-x-project/Core Data/User+CoreDataClass.swift"; sourceTree = "<group>"; };
+		F11AA8A22D43BE5B00359C90 /* User+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "User+CoreDataProperties.swift"; path = "little-x-project/Core Data/User+CoreDataProperties.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
@@ -47,12 +47,12 @@
 		F10735DE2D3D8CF000740871 = {
 			isa = PBXGroup;
 			children = (
-				F11AA7DF2D42F10F00359C90 /* Like+CoreDataClass.swift */,
-				F11AA7E02D42F10F00359C90 /* Like+CoreDataProperties.swift */,
-				F11AA7E12D42F10F00359C90 /* Post+CoreDataClass.swift */,
-				F11AA7E22D42F10F00359C90 /* Post+CoreDataProperties.swift */,
-				F11AA7E32D42F10F00359C90 /* User+CoreDataClass.swift */,
-				F11AA7E42D42F10F00359C90 /* User+CoreDataProperties.swift */,
+				F11AA89D2D43BE5B00359C90 /* Like+CoreDataClass.swift */,
+				F11AA89E2D43BE5B00359C90 /* Like+CoreDataProperties.swift */,
+				F11AA89F2D43BE5B00359C90 /* Post+CoreDataClass.swift */,
+				F11AA8A02D43BE5B00359C90 /* Post+CoreDataProperties.swift */,
+				F11AA8A12D43BE5B00359C90 /* User+CoreDataClass.swift */,
+				F11AA8A22D43BE5B00359C90 /* User+CoreDataProperties.swift */,
 				F10735E92D3D8CF000740871 /* little-x-project */,
 				F10735E82D3D8CF000740871 /* Products */,
 			);
@@ -140,12 +140,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F11AA7E52D42F10F00359C90 /* Like+CoreDataClass.swift in Sources */,
-				F11AA7E62D42F10F00359C90 /* User+CoreDataProperties.swift in Sources */,
-				F11AA7E72D42F10F00359C90 /* User+CoreDataClass.swift in Sources */,
-				F11AA7E82D42F10F00359C90 /* Like+CoreDataProperties.swift in Sources */,
-				F11AA7E92D42F10F00359C90 /* Post+CoreDataClass.swift in Sources */,
-				F11AA7EA2D42F10F00359C90 /* Post+CoreDataProperties.swift in Sources */,
+				F11AA8A32D43BE5B00359C90 /* Post+CoreDataProperties.swift in Sources */,
+				F11AA8A42D43BE5B00359C90 /* Like+CoreDataClass.swift in Sources */,
+				F11AA8A52D43BE5B00359C90 /* Like+CoreDataProperties.swift in Sources */,
+				F11AA8A62D43BE5B00359C90 /* Post+CoreDataClass.swift in Sources */,
+				F11AA8A72D43BE5B00359C90 /* User+CoreDataClass.swift in Sources */,
+				F11AA8A82D43BE5B00359C90 /* User+CoreDataProperties.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

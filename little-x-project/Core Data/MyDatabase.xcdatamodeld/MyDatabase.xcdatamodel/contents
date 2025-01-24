@@ -14,5 +14,6 @@
         <attribute name="profileImageURL" optional="YES" attributeType="String"/>
         <attribute name="userName" optional="YES" attributeType="String"/>
         <relationship name="follows" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="User"/>
+        <relationship name="posts" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Post"/>
     </entity>
 </model>

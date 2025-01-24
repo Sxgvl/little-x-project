@@ -19,10 +19,11 @@ struct UserProfileCellView: View {
     }
     
     @Environment(\.managedObjectContext) var context
+    @State private var showingEditAlert = false
     @State private var showingDeleteAlert = false
     
     var body: some View {
-        VStack {
+        HStack {
             AsyncImage(url: user.profileImageURL) { image in
                 image
                     .resizable()
@@ -32,7 +33,7 @@ struct UserProfileCellView: View {
                 Circle()
                     .fill(Color.gray.opacity(0.3))
             }
-            .frame(width: 70, height: 70)
+            .frame(width: 50, height: 50)
             .overlay(
                 Circle()
                     .strokeBorder(
@@ -44,6 +45,67 @@ struct UserProfileCellView: View {
             Text(user.userName)
                 .font(.headline)
                 .foregroundColor(.primary)
+            
+            Spacer()
+            
+            if isSelected {
+                Menu {
+                    //
+                    Button("Annuler", role: .cancel) {}
+                    
+                    //
+                    Button(
+                        action: {
+                            showingDeleteAlert = true
+                            print("Supprimer")
+                        },
+                        label : {
+                            HStack{
+                                Image(systemName: "trash")
+                                    .foregroundColor(.red)
+                                Text("Supprimer")
+                            }
+                        }
+                    )
+                    
+                    //
+                    Button(
+                        action: {
+                            showingEditAlert = true
+                            print("Modifier")
+                        },
+                        label : {
+                            HStack{
+                                Image(systemName: "square.and.pencil")
+                                    .foregroundColor(.orange)
+                                Text("Modifier")
+                            }
+                        }
+                    )
+                    
+                    //
+                    Button(
+                        action: {
+                            print("Voir les posts")
+                        },
+                        label : {
+                            HStack{
+                                Image(systemName: "list.dash")
+                                    .foregroundColor(.blue)
+                                Text("Voir les posts")
+                            }
+                        }
+                    )
+                } label: {
+                    Label {
+                        Text("")
+                    } icon: {
+                        Image(systemName: "ellipsis")
+                            .font(.system(size: 20, weight: .bold))
+                            .foregroundColor(Color.gray)
+                    }
+                }
+            }
         }
         .padding()
     }
@@ -63,7 +125,7 @@ struct UserProfileCellView: View {
 #Preview {
     UserProfileCellView(
         user: UserModel(
-            userName: "Autumn G.",
+            userName: "Autumn Goodman",
             follows: [],
             profileImageURL: URL(string: "https://unsplash.com/fr/photos/femme-souriant-portant-une-couronne-de-fleurs-vTL_qy03D1I?utm_content=creditShareLink&utm_medium=referral&utm_source=unsplash")
         ),

@@ -12,6 +12,7 @@ struct UserListView: View {
     @FetchRequest(sortDescriptors: []) private var users: FetchedResults<User>
     
     @State private var isShowingCreateUserModal = false
+    @Binding var selectedUser: User?
     
     var body: some View {
         NavigationView {
@@ -24,8 +25,10 @@ struct UserListView: View {
                                 follows: [],
                                 profileImageURL: URL(string: user.profileImageURL ?? "")
                             ),
-                            isSelected: false
-                        )
+                            isSelected: user == selectedUser
+                        ).onTapGesture {
+                            selectedUser = user
+                        }
                     } else {
                         Text("Invalid User")
                     }
@@ -44,5 +47,11 @@ struct UserListView: View {
 }
 
 #Preview {
-    UserListView()
+    let context = DataController.preview.container.viewContext
+        let user = User(context: context)
+        user.userName = "John Doe"
+        user.profileImageURL = ""
+
+        return UserListView(selectedUser: .constant(user))
+            .environment(\.managedObjectContext, context)
 }
