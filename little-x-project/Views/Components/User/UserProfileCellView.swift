@@ -25,8 +25,10 @@ struct UserProfileCellView: View {
         return URL(string: urlString)
     }
     
-    @State private var showingEditModal = false
+    
     @State private var isShowingContentView = false
+    @State private var showingEditModal = false
+    @State private var showingDeleteConfirmation = false
     
     let onSelect: () -> Void
     
@@ -106,6 +108,16 @@ struct UserProfileCellView: View {
             }
         }
         .padding()
+        .sheet(isPresented: $showingEditModal) {
+            UserEditFormModalView(user: user)
+                .environment(\.managedObjectContext, context)
+        }
+        .alert("Supprimer l'utilisateur ?", isPresented: $showingDeleteConfirmation) {
+            Button("Supprimer", role: .destructive) {
+                deleteUser()
+            }
+            Button("Annuler", role: .cancel) {}
+        }
     }
     
     //
