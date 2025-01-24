@@ -22,14 +22,10 @@ struct UserListView: View {
     var body: some View {
         NavigationStack {
             List {
-                ForEach(users, id: \.self) { user in
-                    if let username = user.userName {
+                ForEach(users) { user in
+                    if user.userName != nil {
                         UserProfileCellView(
-                            user: UserModel(
-                                userName: username,
-                                follows: [],
-                                profileImageURL: URL(string: user.profileImageURL ?? "")
-                            ),
+                            user: user,
                             isSelected: user == selectedUser,
                             onSelect: {
                                 selectedUser = user
@@ -82,7 +78,7 @@ struct UserListView: View {
     let context = DataController.preview.container.viewContext
     let user = User(context: context)
     user.userName = "John Doe"
-    user.profileImageURL = ""
+    user.profileImageURL = "https://st3.depositphotos.com/15648834/17930/v/450/depositphotos_179308454-stock-illustration-unknown-person-silhouette-glasses-profile.jpg"
     
     return UserListView(selectedUser: .constant(user))
         .environment(\.managedObjectContext, context)

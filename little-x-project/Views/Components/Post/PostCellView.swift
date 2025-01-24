@@ -62,7 +62,7 @@ struct PostCellView: View {
 
 #Preview {
     let user = User(context: DataController.preview.container.viewContext)
-    user.userName = "John Doe"
+    user.userName = "Autumn Goodman"
     user.profileImageURL = "https://unsplash.com/fr/photos/femme-souriant-portant-une-couronne-de-fleurs-vTL_qy03D1I?utm_content=creditShareLink&utm_medium=referral&utm_source=unsplash"
 
     let post = Post(context: DataController.preview.container.viewContext)

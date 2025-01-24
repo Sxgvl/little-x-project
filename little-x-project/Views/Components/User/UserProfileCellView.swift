@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct UserProfileCellView: View {
-    let user: UserModel
+    let user: User
     let isSelected: Bool
     
     var gradient: AngularGradient {
@@ -19,6 +19,12 @@ struct UserProfileCellView: View {
     }
     
     @Environment(\.managedObjectContext) var context
+    
+    private var profileImageURL: URL? {
+        guard let urlString = user.profileImageURL else { return nil }
+        return URL(string: urlString)
+    }
+    
     @State private var showingEditModal = false
     @State private var isShowingContentView = false
     
@@ -26,7 +32,8 @@ struct UserProfileCellView: View {
     
     var body: some View {
         HStack {
-            AsyncImage(url: user.profileImageURL) { image in
+            // Image de profil sécurisée
+            AsyncImage(url: profileImageURL) { image in
                 image
                     .resizable()
                     .aspectRatio(contentMode: .fill)
@@ -44,96 +51,66 @@ struct UserProfileCellView: View {
                     )
             )
             
-            Text(user.userName)
+            // Nom d'utilisateur sécurisé
+            Text(user.userName ?? "Unknown User")
                 .font(.headline)
                 .foregroundColor(.primary)
             
             Spacer()
             
+            // Menu des actions si l'utilisateur est sélectionné
             if isSelected {
                 Menu {
-                    //
-                    Button(
-                        action: {
-                            isShowingContentView = true
-//                            print("Voir les posts")
-                            onSelect()
-                        },
-                        label : {
-                            HStack{
-                                Image(systemName: "list.dash")
-                                    .foregroundColor(.blue)
-                                Text("Voir les posts")
-                            }
-                        }
-                    )
-                    
-                    //
-                    Button(
-                        action: {
-                            showingEditModal = true
-                            print("Modifier")
-                        },
-                        label : {
-                            HStack{
-                                Image(systemName: "square.and.pencil")
-                                    .foregroundColor(.orange)
-                                Text("Modifier")
-                            }
-                        }
-                    )
-                    
-                    //
-                    Button(
-                        action: {
-                            //                            showingDeleteAlert = true
-                            print("Supprimer")
-                        },
-                        label : {
-                            HStack{
-                                Image(systemName: "trash")
-                                    .foregroundColor(.red)
-                                Text("Supprimer")
-                            }
-                        }
-                    )
-                    
-                    //
+                    Button("Voir les posts") {
+                        isShowingContentView = true
+                        onSelect()
+                    }
+                    Button("Modifier") {
+                        showingEditModal = true
+                    }
+                    Button(role: .destructive) {
+                        deleteUser()
+                    } label: {
+                        Label("Supprimer", systemImage: "trash")
+                    }
                     Button("Annuler", role: .cancel) {}
                 } label: {
-                    Label {
-                        Text("")
-                    } icon: {
-                        Image(systemName: "ellipsis")
-                            .font(.system(size: 20, weight: .bold))
-                            .foregroundColor(Color.gray)
-                    }
+                    Image(systemName: "ellipsis")
+                        .font(.system(size: 20, weight: .bold))
+                        .foregroundColor(.gray)
                 }
             }
         }
         .padding()
     }
     
-    //    private func deleteUser() {
-    //        // Suppression de l'utilisateur dans CoreData
-    //        context.delete(user)
-    //
-    //        do {
-    //            try context.save()
-    //        } catch {
-    //            print("Failed to delete user: \(error.localizedDescription)")
-    //        }
-    //    }
+    
+    private func deleteUser() {
+        context.delete(user)
+        do {
+            try context.save()
+        } catch {
+            print("Failed to delete user: \(error.localizedDescription)")
+        }
+    }
 }
 
 #Preview {
-    UserProfileCellView(
-        user: UserModel(
-            userName: "Autumn Goodman",
-            follows: [],
-            profileImageURL: URL(string: "https://unsplash.com/fr/photos/femme-souriant-portant-une-couronne-de-fleurs-vTL_qy03D1I?utm_content=creditShareLink&utm_medium=referral&utm_source=unsplash")
-        ),
+    let previewUser = User(context: DataController.preview.container.viewContext)
+    previewUser.userName = "John Doe"
+    previewUser.profileImageURL = "https://st3.depositphotos.com/15648834/17930/v/450/depositphotos_179308454-stock-illustration-unknown-person-silhouette-glasses-profile.jpg"
+    
+    return UserProfileCellView(
+        user: previewUser,
         isSelected: true,
         onSelect: {}
     )
 }
+
+//#Preview {
+//    UserProfileCellView(
+//        user: User(), // Remplace par un objet Core Data User valide pour la prévisualisation
+//        isSelected: true,
+//        onSelect: {}
+//    )
+//}
