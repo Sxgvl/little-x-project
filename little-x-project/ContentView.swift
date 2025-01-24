@@ -92,6 +92,7 @@ struct ContentView: View {
         }
     }
     
+    // 
     private func toggleLike(for post: Post) {
         guard let currentUser = selectedUser else { return }
         
